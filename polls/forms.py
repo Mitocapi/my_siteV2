@@ -42,11 +42,11 @@ class CreateQuestionForm(forms.ModelForm):
         }
 
 class CreateChoiceForm(forms.ModelForm):
-    decription = "Create choice question"
+    description = "Create choice question"
 
     def clean(self):
         q= get_object_or_404(Question,pk=self.cleaned_data["question"].id)
-
+        print("anche inizio form fa la sua parte")
         choices = q.choices.all()
         choices_false = choices.filter(is_correct=False)
 
@@ -59,6 +59,7 @@ class CreateChoiceForm(forms.ModelForm):
         if(choices.filter(is_correct=True).count()==1 and self.cleaned_data["is_correct"]==True):
             self.add_error("is_correct", "Error: This question already has a correct answer")
 
+        print("anche il form fa la sua parte")
         return self.cleaned_data
 
 

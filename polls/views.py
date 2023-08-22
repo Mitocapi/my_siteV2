@@ -117,11 +117,13 @@ class CreateQuestionView(CreateView):
     form_class = CreateQuestionForm
     success_url = reverse_lazy("polls:index")
 
+
 class CreateChoiceView(CreateView):
-    template_name= "polls/createentry.html"
+    template_name = "polls/createentry.html"
     form_class = CreateChoiceForm
 
     def get_success_url(self):
+        print("ho fatto la mia parte")
         ctx = self.get_context_data()
         pk = ctx["object"].question.pk
         return reverse("polls:detail", kwargs={"pk": pk})
