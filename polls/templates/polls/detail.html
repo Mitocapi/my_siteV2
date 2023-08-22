@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>{{ question.question_text }}</h1>
+<ul>
+{% for choice in question.choice.all %}
+    <li>{{ choice.choice_text }} {{ choice.votes }} votes </li>
+{% endfor %}
+</ul>
+
+<a href="{% url 'polls:vote' object.id %}">COMPRANE UNO!</a>
+
+{% endblock %}
