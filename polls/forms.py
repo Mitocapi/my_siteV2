@@ -66,3 +66,9 @@ class CreateChoiceForm(forms.ModelForm):
     class Meta:
         model = Choice
         fields = "__all__"
+
+
+class QuestionCrispyForm(forms.ModelForm):
+    class Meta:
+        model = Question
+        fields = ('__all__')
