@@ -15,7 +15,8 @@ urlpatterns = [
     path("vote/<pk>", vote, name="vote"),
     path("votecasted/<pk>/<str:answer>", VoteCastedDetail.as_view(), name="votecasted"),
     path("createquestion/", CreateQuestionView.as_view(), name= "createquestion"),
-    path ("createchoice/", CreateChoiceView.as_view(), name="createchoice")
+    path ("createchoice/", CreateChoiceView.as_view(), name="createchoice"),
+
 
 ]
 

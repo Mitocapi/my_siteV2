@@ -23,14 +23,16 @@ class DetailQuestion(DetailView):
 
 def vote(request, pk):
     if request.method=="POST":
-        form= VoteForm(data=request.POST,pk=pk)
+        #form= VoteForm(data=request.POST,pk=pk)
+        form = VoteCrispyForm(data=request.POST, pk=pk)
         if form.is_valid():
             answer=form.cleaned_data.get("answer")
             return redirect("polls:votecasted", pk,answer.choice_text)
     else:
         q=get_object_or_404(Question,pk=pk)
-        form = VoteForm(pk=pk)
-        return render (request, template_name="polls/vote.html",
+        #form = VoteForm(pk=pk)
+        form = VoteCrispyForm(pk=pk)
+        return render (request, template_name="polls/vote2.html",
                        context={"form":form, "question":q})
 
 

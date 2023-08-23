@@ -1,6 +1,8 @@
 from django import forms
 from django.shortcuts import get_object_or_404
 from .models import *
+from crispy_forms.layout import Submit
+from crispy_forms.helper import FormHelper
 
 class SearchForm(forms.Form):
 
@@ -68,7 +70,9 @@ class CreateChoiceForm(forms.ModelForm):
         fields = "__all__"
 
 
-class QuestionCrispyForm(forms.ModelForm):
-    class Meta:
-        model = Question
-        fields = ('__all__')
+class VoteCrispyForm(VoteForm):
+
+    helper = FormHelper()
+    helper.from_id = 'vote_crispy_form'
+    helper.from_method = 'POST'
+    helper.add_input(Submit('submit', 'Vote'))
